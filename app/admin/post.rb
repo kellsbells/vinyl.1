@@ -1,4 +1,5 @@
 ActiveAdmin.register Post do
+  permit_params :album_name, :artist, :year, :intention, :description, :image
 
 
   # See permitted parameters documentation:
