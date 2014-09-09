@@ -40,7 +40,10 @@
     <% end %>
   </tbody>
 </table>
-
+<% if current_user.present? %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_post_path,
             :class => 'btn btn-primary' %>
+            <% else %>
+            <h4>Sign up to exchange or sell vinyls in this space .<h4>
+<% end %>
