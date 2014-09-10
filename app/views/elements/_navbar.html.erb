@@ -7,9 +7,16 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <%= link_to "My Application", defined?(root_path) ? root_path : "#", class: "navbar-brand" %>
-  </div>
+    <%= link_to "S.L.Vinyl", defined?(root_path) ? root_path : "#", class: "navbar-brand" %>
 
+    <form class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search for a vinyl">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+  </div>
+  
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="navbar-collapse-1">
     <ul class="nav navbar-nav">

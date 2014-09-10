@@ -1,49 +1,66 @@
-<%- model_class = Post -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => Post %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th><%= model_class.human_attribute_name(:album_name) %></th>
-      <th><%= model_class.human_attribute_name(:artist) %></th>
-      <th><%= model_class.human_attribute_name(:year) %></th>
-      <th><%= model_class.human_attribute_name(:intention) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:image) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.id %></td>
-        <td><%= post.album_name %></td>
-        <td><%= post.artist %></td>
-        <td><%= post.year %></td>
-        <td><%= post.intention %></td>
-        <td><%= post.description %></td>
-        <td><%= post.image %></td>
-        <td><%=l post.created_at, format: :long %></td>
-        <td>
-          <%= link_to post_path(post), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-            <%= glyph 'pencil' %>
-          <%- end -%>
-          <%= link_to post_path(post), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
-          <%- end -%>
-        </td>
-      </tr>
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron hero-spacer">
+        <h1>A Warm Welcome!</h1>
+        <div class="page-header">
+        <% if current_user.present? %>
+        <h2>Post a vinyl you want to exchange</h2>
+        <%= link_to 'Post a vinyl',
+                    new_post_path,
+                    :class => 'btn btn-primary' %>
+                    <% else %>
+                    <h4>Log in to exchange or sell vinyls in this space.<h4>
+        <% end %>
+        </div>
+    </header>
+
+    <hr>
+
+    <%- model_class = Post -%>
+    <% @posts.each_slice(3) do |array_of_3_items| %>    <div class="container">
+        <div class="row">
+            <% array_of_3_items.each do |post| %>
+            <div class="col-sm-4 col-md-4">
+                <div class="post">
+                    <div class="post-img-content">
+                        <%= image_tag post.image_url(:thumb).to_s %>
+                        <span class="post-title"><b><%= post.album_name %>/<%= post.year %></b><br />
+                            <b><%= post.artist %></b></span>
+                    </div>
+                    <br>
+                    <div class="content">
+                        <div class="author">
+                            <b>Posted</b> |
+                            <time datetime="2014-01-20"><%= post.created_at.strftime(" %b %d %I:%M %p") %> MT</time>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" ><%#= link_to post_path(post), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %> VIEW <%#- end -%></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        </div>
+        </div>
+        <br>
     <% end %>
-  </tbody>
-</table>
-<% if current_user.present? %>
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_post_path,
-            :class => 'btn btn-primary' %>
-            <% else %>
-            <h4>Sign up to exchange or sell vinyls in this space .<h4>
-<% end %>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <%= render :partial => 'show' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
