@@ -9,6 +9,6 @@ class SearchController < ApplicationController
     else
       @results = Search.for(keyword)
     end
-
+    
   end
 end
