@@ -1,0 +1,5 @@
+These are your posts
+<br>
+<% @posts.each do |post| %>
+  <ul><%= link_to post.artist, post_path(post.id) %></ul>
+<% end %>
