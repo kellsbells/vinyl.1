@@ -20,7 +20,7 @@
   </dl>
 </div>
 
-<% if current_user.present? %>
+<% if current_user.id == @post.user.id %>
   <div class="form-group">
     <%= link_to 'Home',
                 posts_path, :class => 'btn btn-default'  %>
