@@ -39,9 +39,9 @@
 
     <div class="form-group">
       <div class='col-md-offset-2 col-md-10'>
-        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= f.submit nil, :class => 'btn btn-sky text-uppercase' %>
         <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    posts_path, :class => 'btn btn-default' %>
+                    posts_path, :class => 'btn btn-sky text-uppercase' %>
       </div>
     </div>
   <% end %>
@@ -49,5 +49,5 @@
   <h3>You must be logged in to post a vinyl (:</h3>
   <%= link_to 'Sign In Here',
       new_user_session_path,
-      :class => 'btn btn-primary' %>
+      :class => 'btn btn-sky text-uppercase' %>
 <% end %>

@@ -23,7 +23,7 @@
                                 <time datetime="2014-01-20"><%= post.created_at.strftime(" %b %d %I:%M %p") %> MT</time>
                             </div>
                             <div>
-                                <button type="button" class="btn btn-info btn-xs" ><%= link_to post_path(post), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %> VIEW <%- end -%></button>
+                                <button type="button" class="btn btn-sky text-capitalize btn-xs" ><%= link_to post_path(post), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %> VIEW <%- end -%></button>
                             </div>
                         </div>
                     </div>

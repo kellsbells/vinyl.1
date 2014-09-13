@@ -42,18 +42,18 @@
             </div>
                  <div class="panel-footer">
                         <i><%= link_to 'Home',
-                                  posts_path, :class => 'btn btn-default'  %></i>
+                                  posts_path, :class => 'btn btn-sky text-uppercase'  %></i>
                         <span class="pull-right">
                           <div class="form-group">
                             <%# if current_user.present? %>
                             <% if current_user.present? && current_user.id == @post.user.id %>
                             <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                                        edit_post_path(@post), :class => 'btn btn-default' %>
+                                        edit_post_path(@post), :class => ' btn btn-sky text-uppercase' %>
                             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                                     post_path(@post),
                                     :method => 'delete',
                                     :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                                    :class => 'btn btn-danger' %>
+                                    :class => 'btn btn-sky text-uppercase' %>
                             <% end %>
                             <%# end %>
                           </div>
