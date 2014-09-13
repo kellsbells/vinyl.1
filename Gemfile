@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'carrierwave'
 gem 'rmagick', require: false
+gem 'font-awesome-rails'
+gem 'kaminari'
 
 gem 'spring',        group: :development
 gem 'bundler'
