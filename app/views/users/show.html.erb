@@ -1,40 +1,43 @@
-<% if @posts.any? %>
-	<% @posts.each_slice(3) do |array_of_3_items| %>    
-	    <div class="container">
-	    	<h2>These are your posts:</h2>
-	    	<br>
-	        <div class="row">
-	            <% array_of_3_items.each do |post| %>
-	            <div class="col-sm-4 col-md-4">
-	                <div class="post">
-	                    <div class="post-img-content">
-	                        <%= image_tag post.image_url(:thumb).to_s %>
-	                        <span class="post-title"><b><%= post.album_name %>/<%= post.year %></b><br />
-	                            <b><%= post.artist %></b></span>
-	                    </div>
-	                    <br>
-	                    <div class="content">
-	                        <div class="author">
-	                            <b>Posted</b> |
-	                            <time datetime="2014-01-20"><%= post.created_at.strftime(" %b %d %I:%M %p") %> MT</time>
-	                        </div>
-	                        <div>
-	                            <button type="button" class="btn btn-info btn-xs" ><%= link_to post_path(post), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %> VIEW <%- end -%></button>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <% end %>
-	        </div>
-	    </div>
-	    <br>
+<br><br><br><br>
+<ul class='results'>
+	<% if @posts.any? %>
+		<% @posts.each_slice(3) do |array_of_3_items| %>    
+		    <div class="container">
+		    	<h2>These are your posts:</h2>
+		    	<br>
+		        <div class="row">
+		            <% array_of_3_items.each do |post| %>
+		            <div class="col-sm-4 col-md-4">
+		                <div class="post">
+		                    <div class="post-img-content">
+		                        <%= image_tag post.image_url(:thumb).to_s %>
+		                        <span class="post-title"><b><%= post.album_name %>/<%= post.year %></b><br />
+		                            <b><%= post.artist %></b></span>
+		                    </div>
+		                    <br>
+		                    <div class="content">
+		                        <div class="author">
+		                            <b>Posted</b> |
+		                            <time datetime="2014-01-20"><%= post.created_at.strftime(" %b %d %I:%M %p") %> MT</time>
+		                        </div>
+		                        <div>
+		                            <button type="button" class="btn btn-info btn-xs" ><%= link_to post_path(post), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %> VIEW <%- end -%></button>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		            <% end %>
+		        </div>
+		    </div>
+		    <br>
+		<% end %>
+	<% else %>
+		<div class="container">
+		  <h2>You don't have any live posts at the moment!</h2>
+		  <br>
+		  <%= link_to 'Post a vinyl',
+	            new_post_path,
+	            :class => 'btn btn-primary' %>
+		</div>
 	<% end %>
-<% else %>
-	<div class="container">
-	  <h2>You don't have any live posts at the moment!</h2>
-	  <br>
-	  <%= link_to 'Post a vinyl',
-            new_post_path,
-            :class => 'btn btn-primary' %>
-	</div>
-<% end %>
+</ul>
